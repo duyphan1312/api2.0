@@ -1,0 +1,18 @@
+version: "2.1"
+
+networks:
+  test:
+
+services:
+  api:
+    image: api:1.0
+    build: .
+    networks:
+      - test
+    volumes:
+      - ../share:/usr/src/app/share/
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./org1-wallet:/usr/src/app/org1-wallet
+    ports:
+      - 4000:4000
+    
